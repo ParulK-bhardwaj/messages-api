@@ -6,7 +6,18 @@ const UserSchema = new Schema({
     password: { type: String, select: false },
     messages : [{ type: Schema.Types.ObjectId, ref: "Message" }]
 })
-  
+
+
 const User = mongoose.model('User', UserSchema)
   
 module.exports = User
+
+// UserSchema.pre('findOne', function (next) {
+//     this.populate('messages')
+//     next()
+// })
+
+// UserSchema.pre('find', function (next) {
+//     this.populate('messages')
+//     next()
+// })

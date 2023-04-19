@@ -6,7 +6,12 @@ const User = require('../models/user')
 
 /** Route to get all messages. */
 router.get('/', (req, res) => {
-    return res.send(`All Messages route`)
+    Message.find().then((messages) => {
+        return res.json({messages})
+    })
+    .catch((err) => {
+        throw err.message
+    });
 })
 
 /** Route to get one message by id. */
